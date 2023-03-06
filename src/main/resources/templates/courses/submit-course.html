@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <title>Add Course</title>
+   </head>
+
+<body>
+
+
+   <div class="container">
+   <div>
+      <h3><strong>Submit Course</strong></h3>
+   </div>
+   <div>
+      <hr />
+   </div>
+   <div>
+      <p><strong>Course Information:</strong></p>
+   </div>
+		<div>
+      <form th:action="@{/courses/save}" th:object="${course}" method="POST">
+         <input type="hidden" th:field="*{courseId}" class="form-control mb-4 col-4"/>
+         <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Name" />
+         <!--Instructor ID: <input type="number" th:field="*{instructorId}" class="form-control mb-4 col-4" /-->
+         Year: <input type="number" th:field="*{year}" class="form-control mb-4 col-4" min="1970" max="2022" />
+         <div><label>Semester:</label> </div> 
+		 <div> <input type="radio" name="semester" th:field="*{semester}" value="Fall" /><label for="fall"> <strong> Fall </strong></label></div>
+            <div><input type="radio" name="semester" th:field="*{semester}" value="Spring" /><label for="spring"> <strong> Spring </strong></label></div>
+         <div>ECTS:
+            <input type="text" inputmode="decimal" th:field="*{ects}" class="form-control mb-4 col-4" /> </div>
+            <div> DM (Units): <input type="text" inputmode="decimal" th:field="*{dm}" class="form-control mb-4 col-4" /> </div>
+            <input type="text" th:field="*{department}" class="form-control mb-4 col-4" placeholder="Department" />
+            <div><label>Graduate status: </label></div>
+            <div><input name="type" th:field="*{type}" type="radio" value="Mandatory" /> <strong>Mandatory</strong> </div>
+            <div><input name="type" th:field="*{type}" type="radio" value="Optional" /> <strong>Optional</strong>
+            </div>
+            <hr />
+            <div class="form-floating">
+               <label class="form-label">Description:</label>
+               <textarea class="form-control" rows="5" cols="25" th:field="*{description}"></textarea>
+            </div>
+            <div class="form-floating">
+               <label class="form-label">Syllabus:</label>
+               <textarea class="form-control" rows="5" cols="25" th:field="*{syllabus}"></textarea>
+            </div>
+            <hr />
+            <div></div>
+            <p><button class="btn btn-primary" type="submit">Submit</button></p>
+      </form>
+      </div>
+   <hr />
+   <p><span style="text-decoration: underline; color: #3366ff;"><a th:href="@{/courses/list}" >Back to Course List</a></span></p>
+</body>
+</html>

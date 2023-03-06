@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <title>View Statistics</title>
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+	var x = window.location.href.split("=")[1]; 
+	var y = window.location.href.split("=")[2];
+	var z = window.location.href.split("=")[0];
+	
+	
+</script>
+<div class="container">
+	<h3><strong>Grade Statistics</strong></h3>
+	<hr />
+		<table class="table table-bordered table-striped">
+			<strong>
+			<thead class="thead-dark">
+				<tr>
+					<th>Type</th>
+					<th>Lab Grade</th>
+					<th>Final Grade</th>
+				</tr>
+			</thead>
+			</strong>
+
+		<tbody>
+			<tr th:each="tempGrade : ${grades}">
+				<td>Minimum Grade </td>
+				<td th:text="*{tempGrade.labMin}" />
+				<td th:text="*{tempGrade.finalMin}" />
+			</tr>
+			
+			<tr th:each="tempGrade : ${grades}">
+				<td>Maximum Grade </td>
+				<td th:text="*{tempGrade.labMax}" />
+				<td th:text="*{tempGrade.finalMax}" />				
+			</tr>
+			
+			<tr th:each="tempGrade : ${grades}">			
+				<td>Mean</td>
+				<td th:text="*{tempGrade.labMean}" />
+				<td th:text="*{tempGrade.finalMean}" />				
+			</tr>
+			
+			<tr th:each="tempGrade : ${grades}">
+				<td>Standard deviation </td>
+				<td th:text="*{tempGrade.labStDev}" />
+				<td th:text="*{tempGrade.finalStDev}" />
+			</tr>
+			
+			<tr th:each="tempGrade : ${grades}">
+				<td>Variance </td>
+				<td th:text="*{tempGrade.labVar}" />
+				<td th:text="*{tempGrade.finalVar}" />
+			</tr>
+			
+			<tr th:each="tempGrade : ${grades}">
+				<td>Percentiles <input id="percentiles" type="number" max="100" min="1"/><form th:action="@{/students/showStats}" method="POST"><button class="btn btn-secondary" name="sumbit" type="submit" onclick="location.href=z+'='+assignVar()+'&courseId='+y;return false;">Submit</button></form></td>
+				<td th:text="*{tempGrade.labPercentiles}" />
+				<td th:text="*{tempGrade.finalPercentiles}" />
+			</tr>
+			
+			<tr th:each="tempGrade : ${grades}">
+				<td>Skewness </td>
+				<td th:text="*{tempGrade.labSkewness}" />
+				<td th:text="*{tempGrade.finalSkewness}" />
+			</tr>
+			
+			<tr th:each="tempGrade : ${grades}">
+				<td>Kurtosis </td>
+				<td th:text="*{tempGrade.labKurtosis}" />
+				<td th:text="*{tempGrade.finalKurtosis}" />
+			</tr>
+			
+			<tr th:each="tempGrade : ${grades}">
+				<td>Median </td>
+				<td th:text="*{tempGrade.labMedian}" />
+				<td th:text="*{tempGrade.finalMedian}" />
+			</tr>
+		</tbody>
+	</table>
+	<p><span style="text-decoration: underline; color: #3366ff;"><a th:href="@{/courses/students/list}" onclick="location.href=this.href+'?courseId='+y;return false;" > Back to Student List</a></span> </p>
+</div>
+<script>
+	function assignVar() {
+		return document.getElementById("percentiles").value;
+	}
+	var test = [[${percentile}]];
+	document.getElementById("percentiles").value = test;
+	
+
+	
+</script>	
+</html>

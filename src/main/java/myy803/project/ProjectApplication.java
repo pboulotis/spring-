@@ -1,13 +1,13 @@
-package com.test.grading;
+package myy803.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GradingApplication {
+public class ProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GradingApplication.class, args);
+		SpringApplication.run(ProjectApplication.class, args);
 	}
 
 }
