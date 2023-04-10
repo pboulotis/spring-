@@ -76,14 +76,6 @@ CREATE TABLE `student` (
 -- Data for table `instructor`
 --
 
--- insert into users(username, password, enabled)values('vlakas','{noop}vlakas',true);
--- insert into users(username, password, enabled)values('pvassil','pvassil',true);
-
--- insert into authorities(username,authority)values('vlakas','ROLE_USER');
-
-
-
-
 INSERT INTO `users` VALUES 
 (1,'Charles','Xavier','charles@xman.com', 'male', 'X-Men', 'professorx', '{noop}xmen',true),
 
